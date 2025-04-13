@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Assistant</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script>
+    async function generateReply() {
+      const email = document.getElementById("email").value;
+      const response = await fetch("/reply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      });
+      const data = await response.json();
+      document.getElementById("output").innerText = data.result || data.error;
+    }
+  </script>
+</head>
+<body class="app">
+  <h1>Email Response Assistant</h1>
+  <textarea id="email" placeholder="Paste your email here..."></textarea>
+  <button onclick="generateReply()">Generate Reply</button>
+  <pre id="output"></pre>
+</body>
+</html>
