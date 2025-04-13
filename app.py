@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load your API key from environment variable
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("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")
 
 # Pretty homepage served by Flask
 @app.route("/", methods=["GET"])
